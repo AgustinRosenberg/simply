@@ -34,7 +34,7 @@ export const Header = ({
 						/>
 					</svg>
 					<div className="count-products">
-						<span id="contador-productos">1</span>
+						<span id="contador-productos">10</span>
 					</div>
 				</div>
 
