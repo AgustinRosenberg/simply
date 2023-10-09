@@ -26,7 +26,7 @@ function App() {
         setCountProducts={setCountProducts}
       />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

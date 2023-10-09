@@ -16,8 +16,11 @@ export const ProductList = ({
                 ? {...item, quantity: item.quantity + 1}
                 : item
                 );
+                setTotal(total + product.price * product.quantity);
+                setCountProducts(countProducts + product.quantity);
                 return setAllProducts([...products]);
         }
+        setTotal(total + product.price * product.quantity);
         setCountProducts(countProducts + product.quantity);
         setAllProducts([...allProducts, product]);
     };

@@ -5,9 +5,26 @@ export const Header = ({
     setAllProducts, 
     total,
     countProducts,
+	setCountProducts,
+	setTotal,
 }) => {
 
     const [active, setActive] = useState(false);
+
+	const onDeleteProduct = (product) => {
+		const results = allProducts.filter(
+			item => item.id !== product.id
+		);
+		setTotal(total - product.price * product.quantity);
+        setCountProducts(countProducts - product.quantity);
+		setAllProducts(results);
+	};
+
+	const onCleanCart = () => {
+		setAllProducts([]);
+		setTotal(0);
+		setCountProducts(0);
+	};
 
     return (
         <header>
@@ -34,7 +51,7 @@ export const Header = ({
 						/>
 					</svg>
 					<div className="count-products">
-						<span id="contador-productos">10</span>
+						<span id="contador-productos">{countProducts}</span>
 					</div>
 				</div>
 
@@ -63,6 +80,7 @@ export const Header = ({
 								strokeWidth="1.5"
 								stroke="currentColor"
 								className="icon-close"
+								onClick={() => onDeleteProduct(product)}
 							>
 								<path
 									strokeLinecap="round"
@@ -78,7 +96,7 @@ export const Header = ({
 						<h3>Total:</h3>
 						<span className="total-pagar">${total}</span>
 					</div>
-                    <button className="btn-clear-all">
+                    <button className="btn-clear-all" onClick={onCleanCart}>
                         Vaciar Carrito
                     </button>
                             </>
